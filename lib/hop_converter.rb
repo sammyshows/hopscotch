@@ -1,30 +1,30 @@
 require_relative 'sequence_formatter'
-require_relative 'notation_sorter'
+require_relative 'notation_filter'
+require 'pry'
 
 class HopConverter
   def initialize(hop_sequence)
     @hop_sequence = hop_sequence
-    @foot = ''
     @notation = []
-    format_hop
-    hop_notation
+    format_sequence
+    filter_notation
   end
 
   def output
-    @notation.map do |hop|
-      "#{@foot}#{hop}"
-    end.join(' ')
+    if @notation.size > 1
+      @notation.transpose.map { |array| array.reduce(:+) }.join(' ')
+    else
+      @notation.join(' ')
+    end
   end
 
   private
 
-  def format_hop
-    @hop_formatter = SequenceFormatter.new
-    @foot, @notation = @hop_formatter.standardise(@hop_sequence)
+  def format_sequence
+    @notation = SequenceFormatter.new.standardise(@hop_sequence)
   end
 
-  def hop_notation
-    @hop_counter = NotationSorter.new
-    @notation = @hop_counter.convert(@notation)
+  def filter_notation
+    @notation = NotationFilter.new.convert(@notation)
   end
 end
