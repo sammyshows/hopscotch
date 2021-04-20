@@ -33,10 +33,22 @@ describe HopConverter do
     expect(hop_converter.output).to eq 'left1'
   end
 
-  # tests for cases where the hop_converter is given a key-value pair
+  # tests for cases where the hop_converter is given a hash with a single key-value pair
 
   # left: [1, 1] == 'left2 left2'
   # right: [1, 1] == 'right2 right2'
+
+  it 'converts left: [1, 1] to left2 left2' do
+    hop_converter = HopConverter.new({ left: [1, 1] })
+    expect(hop_converter.output).to eq 'left2 left2'
+  end
+
+  it 'converts right: [1, 1] to right2 right2' do
+    hop_converter = HopConverter.new({ right: [1, 1] })
+    expect(hop_converter.output).to eq 'right2 right2'
+  end
+
+  # tests for cases where the hop_converter is given a hash with multiple key-value paira
 
   # {
   #   left: [1, 1, 1, 1],
