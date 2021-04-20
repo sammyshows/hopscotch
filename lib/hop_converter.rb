@@ -1,9 +1,17 @@
+require_relative 'hop_formatter'
+require_relative 'hop_counter'
+require 'pry'
+
 class HopConverter
   def initialize(hop_sequence)
-    @hop_sequence = hop_sequence.select { |hop| hop == 1 }
-    @foot = "left"
+    @hop_sequence = hop_sequence
+    @foot = ''
     @notation = []
-    convert
+
+    @hop_formatter = HopFormatter.new
+    format_hop
+    @hop_counter = HopCounter.new
+    hop_notation
   end
 
   def output
@@ -14,7 +22,11 @@ class HopConverter
 
   private
 
-  def convert
-    @notation = @hop_sequence.map { |hop| hop * @hop_sequence.length }
+  def format_hop
+    @foot, @notation = @hop_formatter.standardise(@hop_sequence)
+  end
+
+  def hop_notation
+    @notation = @hop_counter.convert(@notation)
   end
 end

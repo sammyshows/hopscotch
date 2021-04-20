@@ -57,6 +57,8 @@ describe HopConverter do
   # right2 right2
   # '
 
+
+
   # {
   #   left: [1,1,1,1],
   #   right: [1,0,1,0],
