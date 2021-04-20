@@ -11,11 +11,12 @@ class HopConverter
   end
 
   def output
-    if @notation.size > 1
-      @notation.transpose.map { |array| array.reduce(:+) }.join(' ')
-    else
-      @notation.join(' ')
-    end
+    @notation.size > 1 ? @notation.transpose.map { |array| array.reduce(:+) }.join(' ') : @notation.join(' ')
+    # if @notation.size > 1
+    #   @notation.transpose.map { |array| array.reduce(:+) }.join(' ')
+    # else
+    #   @notation.join(' ')
+    # end
   end
 
   private
