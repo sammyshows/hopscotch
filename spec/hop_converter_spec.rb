@@ -23,6 +23,11 @@ describe HopConverter do
     expect(hop_converter.output).to eq 'left2 left2'
   end
 
+  it 'converts [1, 1, 0, 1] to left4 left2 left4' do
+    hop_converter = HopConverter.new([1, 1, 0, 1])
+    expect(hop_converter.output).to eq 'left4 left2 left4'
+  end
+
   it 'converts [1, 0, 0, 0] to left1' do
     hop_converter = HopConverter.new([1, 0, 0, 0])
     expect(hop_converter.output).to eq 'left1'
