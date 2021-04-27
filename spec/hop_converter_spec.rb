@@ -62,10 +62,10 @@ describe HopConverter do
   # right2 right2
   # '
 
-  it 'converts { left: [1, 1, 1, 1], right: [1, 0, 1, 0] } to left4 left4 left4 left4 right2 right2' do
-    hop_converter = HopConverter.new({ left: [1, 1, 1, 1], right: [1, 0, 1, 0] })
-    expect(hop_converter.output).to eq 'left4 left4 left4 left4 right2 right2'
-  end
+  # it 'converts { left: [1, 1, 1, 1], right: [1, 0, 1, 0] } to left4 left4 left4 left4 right2 right2' do
+  #   hop_converter = HopConverter.new({ left: [1, 1, 1, 1], right: [1, 0, 1, 0] })
+  #   expect(hop_converter.output).to eq 'left4 left4 left4 left4 right2 right2'
+  # end
 
   # if two key-value pairs are given, output should match the corresponding left and right hops
 
