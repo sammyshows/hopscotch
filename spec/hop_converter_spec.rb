@@ -2,7 +2,7 @@ require 'hop_converter'
 
 describe HopConverter do
   # tests for cases where the hop_converter array consists of the same number
-  it 'converts [1,1] to left2 left2' do
+  it 'converts [1, 1] to left2 left2' do
     hop_converter = HopConverter.new([1, 1])
     expect(hop_converter.output).to eq 'left2 left2'
   end
